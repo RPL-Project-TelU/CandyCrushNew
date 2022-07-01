@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateJasaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateJasaLabel_idJasa}" for="idJasa" />
+                    <h:inputText id="idJasa" value="#{jasaController.selected.idJasa}" title="#{bundle.CreateJasaTitle_idJasa}" required="true" requiredMessage="#{bundle.CreateJasaRequiredMessage_idJasa}"/>
+                    <h:outputLabel value="#{bundle.CreateJasaLabel_namaJasa}" for="namaJasa" />
+                    <h:inputText id="namaJasa" value="#{jasaController.selected.namaJasa}" title="#{bundle.CreateJasaTitle_namaJasa}" required="true" requiredMessage="#{bundle.CreateJasaRequiredMessage_namaJasa}"/>
+                    <h:outputLabel value="#{bundle.CreateJasaLabel_deskripsiJasa}" for="deskripsiJasa" />
+                    <h:inputTextarea rows="4" cols="30" id="deskripsiJasa" value="#{jasaController.selected.deskripsiJasa}" title="#{bundle.CreateJasaTitle_deskripsiJasa}" required="true" requiredMessage="#{bundle.CreateJasaRequiredMessage_deskripsiJasa}"/>
+                    <h:outputLabel value="#{bundle.CreateJasaLabel_harga}" for="harga" />
+                    <h:inputText id="harga" value="#{jasaController.selected.harga}" title="#{bundle.CreateJasaTitle_harga}" required="true" requiredMessage="#{bundle.CreateJasaRequiredMessage_harga}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{jasaController.create}" value="#{bundle.CreateJasaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{jasaController.prepareList}" value="#{bundle.CreateJasaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateJasaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

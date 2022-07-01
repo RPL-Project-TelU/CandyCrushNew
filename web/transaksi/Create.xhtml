@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTransaksiTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_idTransaksi}" for="idTransaksi" />
+                    <h:inputText id="idTransaksi" value="#{transaksiController.selected.idTransaksi}" title="#{bundle.CreateTransaksiTitle_idTransaksi}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_idTransaksi}"/>
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_idJasa}" for="idJasa" />
+                    <h:inputText id="idJasa" value="#{transaksiController.selected.idJasa}" title="#{bundle.CreateTransaksiTitle_idJasa}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_idJasa}"/>
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_deskripsiTransaksi}" for="deskripsiTransaksi" />
+                    <h:inputTextarea rows="4" cols="30" id="deskripsiTransaksi" value="#{transaksiController.selected.deskripsiTransaksi}" title="#{bundle.CreateTransaksiTitle_deskripsiTransaksi}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_deskripsiTransaksi}"/>
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_berat}" for="berat" />
+                    <h:inputText id="berat" value="#{transaksiController.selected.berat}" title="#{bundle.CreateTransaksiTitle_berat}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_berat}"/>
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_ongkir}" for="ongkir" />
+                    <h:inputText id="ongkir" value="#{transaksiController.selected.ongkir}" title="#{bundle.CreateTransaksiTitle_ongkir}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_ongkir}"/>
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_totalBayar}" for="totalBayar" />
+                    <h:inputText id="totalBayar" value="#{transaksiController.selected.totalBayar}" title="#{bundle.CreateTransaksiTitle_totalBayar}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_totalBayar}"/>
+                    <h:outputLabel value="#{bundle.CreateTransaksiLabel_tglTransaksi}" for="tglTransaksi" />
+                    <h:inputText id="tglTransaksi" value="#{transaksiController.selected.tglTransaksi}" title="#{bundle.CreateTransaksiTitle_tglTransaksi}" required="true" requiredMessage="#{bundle.CreateTransaksiRequiredMessage_tglTransaksi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{transaksiController.create}" value="#{bundle.CreateTransaksiSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{transaksiController.prepareList}" value="#{bundle.CreateTransaksiShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTransaksiIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

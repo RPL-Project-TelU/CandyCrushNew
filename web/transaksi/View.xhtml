@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTransaksiTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_idTransaksi}"/>
+                    <h:outputText value="#{transaksiController.selected.idTransaksi}" title="#{bundle.ViewTransaksiTitle_idTransaksi}"/>
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_idJasa}"/>
+                    <h:outputText value="#{transaksiController.selected.idJasa}" title="#{bundle.ViewTransaksiTitle_idJasa}"/>
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_deskripsiTransaksi}"/>
+                    <h:outputText value="#{transaksiController.selected.deskripsiTransaksi}" title="#{bundle.ViewTransaksiTitle_deskripsiTransaksi}"/>
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_berat}"/>
+                    <h:outputText value="#{transaksiController.selected.berat}" title="#{bundle.ViewTransaksiTitle_berat}"/>
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_ongkir}"/>
+                    <h:outputText value="#{transaksiController.selected.ongkir}" title="#{bundle.ViewTransaksiTitle_ongkir}"/>
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_totalBayar}"/>
+                    <h:outputText value="#{transaksiController.selected.totalBayar}" title="#{bundle.ViewTransaksiTitle_totalBayar}"/>
+                    <h:outputText value="#{bundle.ViewTransaksiLabel_tglTransaksi}"/>
+                    <h:outputText value="#{transaksiController.selected.tglTransaksi}" title="#{bundle.ViewTransaksiTitle_tglTransaksi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{transaksiController.destroyAndView}" value="#{bundle.ViewTransaksiDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTransaksiEditLink}"/>
+                <br />
+                <h:commandLink action="#{transaksiController.prepareCreate}" value="#{bundle.ViewTransaksiCreateLink}" />
+                <br />
+                <h:commandLink action="#{transaksiController.prepareList}" value="#{bundle.ViewTransaksiShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTransaksiIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

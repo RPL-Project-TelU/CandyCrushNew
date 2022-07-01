@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPenggunaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPenggunaLabel_username}"/>
+                    <h:outputText value="#{penggunaController.selected.username}" title="#{bundle.ViewPenggunaTitle_username}"/>
+                    <h:outputText value="#{bundle.ViewPenggunaLabel_noHP}"/>
+                    <h:outputText value="#{penggunaController.selected.noHP}" title="#{bundle.ViewPenggunaTitle_noHP}"/>
+                    <h:outputText value="#{bundle.ViewPenggunaLabel_alamatPengguna}"/>
+                    <h:outputText value="#{penggunaController.selected.alamatPengguna}" title="#{bundle.ViewPenggunaTitle_alamatPengguna}"/>
+                    <h:outputText value="#{bundle.ViewPenggunaLabel_email}"/>
+                    <h:outputText value="#{penggunaController.selected.email}" title="#{bundle.ViewPenggunaTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewPenggunaLabel_kataSandi}"/>
+                    <h:outputText value="#{penggunaController.selected.kataSandi}" title="#{bundle.ViewPenggunaTitle_kataSandi}"/>
+                    <h:outputText value="#{bundle.ViewPenggunaLabel_createDate}"/>
+                    <h:outputText value="#{penggunaController.selected.createDate}" title="#{bundle.ViewPenggunaTitle_createDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{penggunaController.destroyAndView}" value="#{bundle.ViewPenggunaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPenggunaEditLink}"/>
+                <br />
+                <h:commandLink action="#{penggunaController.prepareCreate}" value="#{bundle.ViewPenggunaCreateLink}" />
+                <br />
+                <h:commandLink action="#{penggunaController.prepareList}" value="#{bundle.ViewPenggunaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPenggunaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

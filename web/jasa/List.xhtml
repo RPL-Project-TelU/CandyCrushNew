@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListJasaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListJasaEmpty}" rendered="#{jasaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{jasaController.items.rowCount > 0}">
+                    <h:outputText value="#{jasaController.pagination.pageFirstItem + 1}..#{jasaController.pagination.pageLastItem + 1}/#{jasaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{jasaController.previous}" value="#{bundle.Previous} #{jasaController.pagination.pageSize}" rendered="#{jasaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{jasaController.next}" value="#{bundle.Next} #{jasaController.pagination.pageSize}" rendered="#{jasaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{jasaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJasaTitle_idJasa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idJasa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJasaTitle_namaJasa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.namaJasa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJasaTitle_deskripsiJasa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deskripsiJasa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListJasaTitle_harga}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.harga}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{jasaController.prepareView}" value="#{bundle.ListJasaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{jasaController.prepareEdit}" value="#{bundle.ListJasaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{jasaController.destroy}" value="#{bundle.ListJasaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{jasaController.prepareCreate}" value="#{bundle.ListJasaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListJasaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

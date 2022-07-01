@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewJasaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewJasaLabel_idJasa}"/>
+                    <h:outputText value="#{jasaController.selected.idJasa}" title="#{bundle.ViewJasaTitle_idJasa}"/>
+                    <h:outputText value="#{bundle.ViewJasaLabel_namaJasa}"/>
+                    <h:outputText value="#{jasaController.selected.namaJasa}" title="#{bundle.ViewJasaTitle_namaJasa}"/>
+                    <h:outputText value="#{bundle.ViewJasaLabel_deskripsiJasa}"/>
+                    <h:outputText value="#{jasaController.selected.deskripsiJasa}" title="#{bundle.ViewJasaTitle_deskripsiJasa}"/>
+                    <h:outputText value="#{bundle.ViewJasaLabel_harga}"/>
+                    <h:outputText value="#{jasaController.selected.harga}" title="#{bundle.ViewJasaTitle_harga}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{jasaController.destroyAndView}" value="#{bundle.ViewJasaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewJasaEditLink}"/>
+                <br />
+                <h:commandLink action="#{jasaController.prepareCreate}" value="#{bundle.ViewJasaCreateLink}" />
+                <br />
+                <h:commandLink action="#{jasaController.prepareList}" value="#{bundle.ViewJasaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewJasaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
