@@ -1,4 +1,4 @@
-// nama kode
+# nama kode scanner
 name: "CodeQL"
 
 on:
@@ -36,8 +36,10 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         
+    # autobuild otomatis running
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
 
+# result analysis
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
