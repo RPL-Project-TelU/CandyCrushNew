@@ -43,7 +43,6 @@ public class ControllerJasaTest {
     public void tearDown() {
     }
     
-    
     @Test
     public void testGetColumnCount(){
         int result = cj.getColumnCount();
